@@ -1,29 +1,24 @@
 #include <iostream>
 
-// Node class to represent each element in the doubly linked list
 class Node {
 public:
     int data;
     Node* prev;
     Node* next;
 
-    // Constructor to initialize data, prev, and next pointers
     Node(int data) : data(data), prev(NULL), next(NULL) {}
 };
 
-// DoublyLinkedList class to manage the list operations
 class DoublyLinkedList {
 public:
-    Node* head; // Pointer to the head of the doubly linked list
+    Node* head; 
 
 public:
-    // Constructor to initialize an empty doubly linked list
     DoublyLinkedList() : head(NULL) {}
 
-    // Function to insert a new node at the beginning of the doubly linked list
     void insertAtBeginning(int data) {
         Node* newNode = new Node(data);
-        if (head == NULL) { // If the list is empty
+        if (head == NULL) { 
             head = newNode;
         } else {
             newNode->next = head;
@@ -32,10 +27,9 @@ public:
         }
     }
 
-    // Function to insert a new node at the end of the doubly linked list
     void insertAtEnd(int data) {
         Node* newNode = new Node(data);
-        if (head == NULL) { // If the list is empty
+        if (head == NULL) { 
             head = newNode;
         } else {
             Node* temp = head;
@@ -47,7 +41,6 @@ public:
         }
     }
 
-    // Function to insert a new node after a given node
     void insertAfter(Node* prevNode, int data) {
         if (prevNode == NULL) {
             std::cout << "Previous node cannot be NULL" << std::endl;
@@ -62,7 +55,6 @@ public:
         prevNode->next = newNode;
     }
 
-    // Function to insert a new node before a given node
     void insertBefore(Node* nextNode, int data) {
         if (nextNode == NULL) {
             std::cout << "Next node cannot be NULL" << std::endl;
@@ -79,7 +71,6 @@ public:
         nextNode->prev = newNode;
     }
 
-    // Function to display the elements of the doubly linked list
     void display() {
         if (head == NULL) {
             std::cout << "Doubly Linked List is empty" << std::endl;
@@ -93,19 +84,18 @@ public:
         std::cout << std::endl;
     }
 
-    // Function to delete a node from the doubly linked list
     void deleteNode(int key) {
         Node* temp = head;
         while (temp != NULL && temp->data != key) {
             temp = temp->next;
         }
-        if (temp == NULL) { // Key not found
+        if (temp == NULL) { 
             std::cout << "Key not found in the list" << std::endl;
             return;
         }
         if (temp->prev != NULL) {
             temp->prev->next = temp->next;
-        } else { // Deleting the head node
+        } else { 
             head = temp->next;
         }
         if (temp->next != NULL) {
